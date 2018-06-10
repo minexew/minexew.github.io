@@ -17,6 +17,16 @@ body {
 	padding-bottom: 5rem;
 }
 
+::-moz-selection {
+	background-color: #eee;
+	color: rgb(49, 58, 70);
+}
+
+::selection {
+	background-color: #eee;
+	color: rgb(49, 58, 70);
+}
+
 a, a:visited {
 	color: rgb(49, 58, 70);
 }
@@ -56,6 +66,10 @@ h1 {
 	height: 10em;
 	width: 100%;
 
+	display: flex;
+	justify-content: right;
+	padding: 5px;
+
 	border-top-left-radius: 4px;
 	border-top-right-radius: 4px;
 }
@@ -64,6 +78,16 @@ h1 {
 	font-size: 1.2rem;
 	padding: 1rem 1rem;
 	margin-bottom: 0px;
+}
+
+.tile p .dot {
+	width: 0.8em;
+	height: 0.8em;
+	border-radius: 0.2em;
+	float: right;
+
+	position: relative;
+	top: 0.5rem;
 }
 
 .tile .label {
@@ -89,7 +113,7 @@ h1 {
 			<div class="col-sm-3">
 				<a href="https://github.com/minexew/h3explorer"  class="tile">
 					<div class="bg" style="background-image: url('https://camo.githubusercontent.com/fad3d081fe5eb6b22a4203bbafbb12bbe8792c44/68747470733a2f2f692e696d6775722e636f6d2f6267554d4553342e706e67'); background-size: 600px; background-position: 0px -280px"></div>
-					<p>h3explorer</p>
+					<p><span class="dot" style="background-color: #3572a5" title="Python"></span> h3explorer</p>
 				</a>
 			</div>
 			<div class="col-sm-3">
@@ -105,13 +129,13 @@ h1 {
 			<div class="col-sm-3">
 				<a href="https://github.com/minexew/zombie-framework"  class="tile">
 					<div class="bg" style="background-image: url('https://imgur.com/oDtQZ9x.png'); background-position: -320px -200px; background-size: 1000px"></div>
-					<p>Zombie Framework</p>
+					<p><span class="dot" style="background-color: #f34b7d" title="C++"></span>Zombie Framework</p>
 				</a>
 			</div>
 			<div class="col-sm-3">
 				<a href="https://github.com/minexew/StormGraph"  class="tile">
 					<div class="bg" style="background-image: url('https://camo.githubusercontent.com/7a675521fe6b8cfba4f779f404cfc8a560815574/687474703a2f2f692e696d6775722e636f6d2f3651787438596f2e706e67')"></div>
-					<p>StormGraph</p>
+					<p><span class="dot" style="background-color: #f34b7d" title="C++"></span>StormGraph</p>
 				</a>
 			</div>
 		</div>
@@ -121,19 +145,19 @@ h1 {
 			<div class="col-sm-3">
 				<a href="https://github.com/minexew/Shrine"  class="tile">
 					<div class="bg" style="background-image: url('https://camo.githubusercontent.com/906642626821a0e76bb8e8492f842d0669c1ad07/687474703a2f2f696d6775722e636f6d2f317959735548492e706e67')"></div>
-					<p>Shrine</p>
+					<p><span class="dot" style="background-color: #00cccc" title="HolyC"></span>Shrine</p>
 				</a>
 			</div>
 			<div class="col-sm-3">
 				<a href="https://github.com/minexew/Lsh"  class="tile">
 					<div class="bg" style="background-image: url('https://camo.githubusercontent.com/4a647c4887dc53151a7467ba2552f4a196133912/687474703a2f2f696d6775722e636f6d2f37544f705876512e676966'); background-position: 0px -300px"></div>
-					<p>Lsh</p>
+					<p><span class="dot" style="background-color: #00cccc" title="HolyC"></span>Lambda Shell</p>
 				</a>
 			</div>
 			<div class="col-sm-3">
 				<a href="https://github.com/minexew/TempleOS"  class="tile">
 					<div class="bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/50/TempleOS_4.05_session.png')"></div>
-					<p>TempleOS mirror</p>
+					<p><span class="dot" style="background-color: #00cccc" title="HolyC"></span>TempleOS mirror</p>
 				</a>
 			</div>
 		</div>
@@ -143,25 +167,25 @@ h1 {
 			<div class="col-sm-3">
 				<a href="https://github.com/minexew/bleb"  class="tile">
 					<div class="bg" style="background-image: url('https://camo.githubusercontent.com/b0d0b1cb47ab4b072fd9185b573cf8c51b2744e5/687474703a2f2f692e696d6775722e636f6d2f356879635a6a352e706e67')"></div>
-					<p>bleb</p>
+					<p><span class="dot" style="background-color: #f34b7d" title="C++"></span>bleb</p>
 				</a>
 			</div>
 			<div class="col-sm-3">
 				<a href="https://github.com/minexew/libcfx2"  class="tile">
 					<div class="bg" style="background-image: url('https://imgur.com/TnUtBC9.png'); background-position: 0px 0px"></div>
-					<p>libcfx2</p>
+					<p><span class="dot" style="background-color: #555555" title="C"></span>libcfx2</p>
 				</a>
 			</div>
 			<div class="col-sm-3">
 				<a href="https://github.com/minexew/littl"  class="tile">
 					<div class="bg" style="background-image: url('https://i.imgur.com/Yfbfpfw.png'); background-position: -100px 0px"></div>
-					<p>littl</p>
+					<p><span class="dot" style="background-color: #f34b7d" title="C++"></span>littl</p>
 				</a>
 			</div>
 			<div class="col-sm-3">
 				<a href="https://github.com/minexew/reflector"  class="tile">
 					<div class="bg" style="background-image: url('https://imgur.com/xO5RgKY.png'); background-position: -50px 0px"></div>
-					<p>reflector</p>
+					<p><span class="dot" style="background-color: #f34b7d" title="C++"></span>reflector</p>
 				</a>
 			</div>
 		</div>
@@ -171,25 +195,25 @@ h1 {
 			<div class="col-sm-3">
 				<a href="https://github.com/minexew/ctrgl"  class="tile">
 					<div class="bg" style="background-image: url('https://camo.githubusercontent.com/a3def54e91ac91d1b981ac042566c21401acca34/687474703a2f2f692e696d6775722e636f6d2f48696a6479364a2e706e67')"></div>
-					<p>ctrgl</p>
+					<p><span class="dot" style="background-color: #555555" title="C"></span>ctrgl</p>
 				</a>
 			</div>
 			<div class="col-sm-3">
 				<a href="https://github.com/minexew/zeroDB"  class="tile">
 					<div class="bg" style="background-image: url('https://camo.githubusercontent.com/6cb46960e3e3f9cc7080934e928d1f94b1887dd4/687474703a2f2f692e696d6775722e636f6d2f524857686b41662e706e67'); background-size: 400px"></div>
-					<p>zeroDB</p>
+					<p><span class="dot" style="background-color: #000080" title="Lua"></span>zeroDB</p>
 				</a>
 			</div>
 			<div class="col-sm-3">
 				<a href="https://github.com/minexew/NeoStats"  class="tile">
 					<div class="bg" style="background-image: url('https://imgur.com/Ceu2O7X.png'); background-size: cover"></div>
-					<p>NeoStats</p>
+					<p><span class="dot" style="background-color: #000080" title="Lua"></span>NeoStats</p>
 				</a>
 			</div>
 			<div class="col-sm-3">
 				<a href="https://github.com/minexew/LostTech"  class="tile">
 					<div class="bg" style="background-image: url('https://rekkerd.org/img/201004/losttechnology.png')"></div>
-					<p>LostTech mirror</p>
+					<p><span class="dot" style="background-color: #f34b7d" title="C++"></span>LostTech mirror</p>
 				</a>
 			</div>
 		</div>
