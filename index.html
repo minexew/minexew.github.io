@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<title></title>
+
+	<style>
+body {
+	/* https://stackoverflow.com/a/32861765/2524350 */
+	background-size: 20px 20px;
+	background-image: linear-gradient(to right, rgb(59, 68, 80) 1px, transparent 1px), linear-gradient(to bottom, rgb(59, 68, 80) 1px, rgb(49, 58, 70) 1px);
+
+	color: #eee;
+	padding-bottom: 5rem;
+}
+
+a, a:visited {
+	color: rgb(49, 58, 70);
+}
+
+a:hover, a:active {
+	color: rgb(39, 48, 60);
+	text-decoration: none;
+}
+
+h1 {
+	margin: 2rem 0 1rem;
+}
+
+.tile {
+	position: relative;
+	display: block;
+	flex: 1;
+	top: 0;
+
+	border-radius: 4px;
+	padding: 8px 0px;
+	
+	background-color: #fff;
+	box-shadow: 2px 2px 2px rgba(0,0,0,0.25);
+
+	transition: box-shadow ease 0.1s, top ease 0.1s;
+}
+
+.tile:hover {
+	top: -10px;
+	box-shadow: 6px 6px 10px rgba(0,0,0,0.25);
+}
+
+.tile .bg {
+	height: 10em;
+	width: 100%;
+}
+
+.tile p {
+	font-size: 1.2rem;
+	padding: 0.5rem 1rem;
+	margin-bottom: 0px;
+}
+
+.tile .label {
+	flex: 1;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	transition: 0.1s background-color linear;
+}
+
+.tile:hover .label {
+	background-color: rgba(0,0,0,0.25);
+}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div style="float: right"><a href="https://github.com/minexew?tab=repositories"><img src="https://image.flaticon.com/icons/svg/25/25231.svg" width="40" alt="All repos" style="filter: invert(100%)"></a></div>
+		<h1>Game Reverse Engineering</h1>
+		<div class="row">
+			<div class="col-sm-3">
+				<a href="https://github.com/minexew/h3explorer"  class="tile">
+					<div class="bg" style="background-image: url('https://camo.githubusercontent.com/fad3d081fe5eb6b22a4203bbafbb12bbe8792c44/68747470733a2f2f692e696d6775722e636f6d2f6267554d4553342e706e67'); background-size: 600px; background-position: 0px -280px"></div>
+					<p>h3explorer</p>
+				</a>
+			</div>
+			<div class="col-sm-3">
+				<a href="https://github.com/minexew/MascotCapsule_Archaeology"  class="tile">
+					<div class="bg" style="background-image: url('https://camo.githubusercontent.com/7087770f54ae34ad4afb73ed5ebeec6530d9797a/68747470733a2f2f692e696d6775722e636f6d2f6d375a334443422e706e67'); background-size: 600px; background-position: -160px -130px"></div>
+					<p>MascotCapsule Micro3D</p>
+				</a>
+			</div>
+		</div>
+
+		<h1>Game Tech</h1>
+		<div class="row">
+			<div class="col-sm-3">
+				<a href="https://github.com/minexew/zombie-framework"  class="tile">
+					<div class="bg" style="background-image: url('https://imgur.com/oDtQZ9x.png'); background-position: -320px -200px; background-size: 1000px"></div>
+					<p>Zombie Framework</p>
+				</a>
+			</div>
+			<div class="col-sm-3">
+				<a href="https://github.com/minexew/StormGraph"  class="tile">
+					<div class="bg" style="background-image: url('https://camo.githubusercontent.com/7a675521fe6b8cfba4f779f404cfc8a560815574/687474703a2f2f692e696d6775722e636f6d2f3651787438596f2e706e67')"></div>
+					<p>StormGraph</p>
+				</a>
+			</div>
+		</div>
+
+		<h1>TempleOS</h1>
+		<div class="row">
+			<div class="col-sm-3">
+				<a href="https://github.com/minexew/Shrine"  class="tile">
+					<div class="bg" style="background-image: url('https://camo.githubusercontent.com/906642626821a0e76bb8e8492f842d0669c1ad07/687474703a2f2f696d6775722e636f6d2f317959735548492e706e67')"></div>
+					<p>Shrine</p>
+				</a>
+			</div>
+			<div class="col-sm-3">
+				<a href="https://github.com/minexew/Lsh"  class="tile">
+					<div class="bg" style="background-image: url('https://camo.githubusercontent.com/4a647c4887dc53151a7467ba2552f4a196133912/687474703a2f2f696d6775722e636f6d2f37544f705876512e676966'); background-position: 0px -300px"></div>
+					<p>Lsh</p>
+				</a>
+			</div>
+			<div class="col-sm-3">
+				<a href="https://github.com/minexew/TempleOS"  class="tile">
+					<div class="bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/5/50/TempleOS_4.05_session.png')"></div>
+					<p>TempleOS mirror</p>
+				</a>
+			</div>
+		</div>
+
+		<h1>C/C++ libraries</h1>
+		<div class="row">
+			<div class="col-sm-3">
+				<a href="https://github.com/minexew/bleb"  class="tile">
+					<div class="bg" style="background-image: url('https://camo.githubusercontent.com/b0d0b1cb47ab4b072fd9185b573cf8c51b2744e5/687474703a2f2f692e696d6775722e636f6d2f356879635a6a352e706e67')"></div>
+					<p>bleb</p>
+				</a>
+			</div>
+			<div class="col-sm-3">
+				<a href="https://github.com/minexew/libcfx2"  class="tile">
+					<div class="bg" style="background-image: url('https://imgur.com/TnUtBC9.png'); background-position: 0px 0px"></div>
+					<p>libcfx2</p>
+				</a>
+			</div>
+			<div class="col-sm-3">
+				<a href="https://github.com/minexew/littl"  class="tile">
+					<div class="bg" style="background-image: url('https://i.imgur.com/Yfbfpfw.png'); background-position: -100px 0px"></div>
+					<p>littl</p>
+				</a>
+			</div>
+			<div class="col-sm-3">
+				<a href="https://github.com/minexew/reflector"  class="tile">
+					<div class="bg" style="background-image: url('https://imgur.com/xO5RgKY.png'); background-position: -50px 0px"></div>
+					<p>reflector</p>
+				</a>
+			</div>
+		</div>
+
+		<h1>Other Stuff</h1>
+		<div class="row">
+			<div class="col-sm-3">
+				<a href="https://github.com/minexew/ctrgl"  class="tile">
+					<div class="bg" style="background-image: url('https://camo.githubusercontent.com/a3def54e91ac91d1b981ac042566c21401acca34/687474703a2f2f692e696d6775722e636f6d2f48696a6479364a2e706e67')"></div>
+					<p>ctrgl</p>
+				</a>
+			</div>
+			<div class="col-sm-3">
+				<a href="https://github.com/minexew/zeroDB"  class="tile">
+					<div class="bg" style="background-image: url('https://camo.githubusercontent.com/6cb46960e3e3f9cc7080934e928d1f94b1887dd4/687474703a2f2f692e696d6775722e636f6d2f524857686b41662e706e67'); background-size: 400px"></div>
+					<p>zeroDB</p>
+				</a>
+			</div>
+			<div class="col-sm-3">
+				<a href="https://github.com/minexew/NeoStats"  class="tile">
+					<div class="bg" style="background-image: url('https://imgur.com/Ceu2O7X.png'); background-size: cover"></div>
+					<p>NeoStats</p>
+				</a>
+			</div>
+			<div class="col-sm-3">
+				<a href="https://github.com/minexew/LostTech"  class="tile">
+					<div class="bg" style="background-image: url('https://rekkerd.org/img/201004/losttechnology.png')"></div>
+					<p>LostTech mirror</p>
+				</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
