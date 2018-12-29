@@ -4,14 +4,14 @@ title:  "Some interesting static recompilation projects"
 comments: true
 ---
 
-### Commodore BASIC by Michael Steil [post](https://www.pagetable.com/?p=48) [repo](https://github.com/mist64/cbmbasic) [diploma thesis](http://softpear.sourceforge.net/down/steil-recompilation.pdf)
+### Commodore BASIC [blogpost](https://www.pagetable.com/?p=48), [repo](https://github.com/mist64/cbmbasic), [diploma thesis](http://softpear.sourceforge.net/down/steil-recompilation.pdf)
 
 - original 1977, C64 ROM, 6502 8-bit
 - custom disassembler to LLVM IR (not published)
 - IR translated to C (no reconstruction of higher-level structure), compiled natively
 - original program has very clean platform interface, no interrupts etc.
 
-### Albion, X-Com: UFO Defense (UFO: Enemy Unknown), X-Com: Terror from the Deep, Warcraft: Orcs & Humans [M-HT's repo](https://github.com/M-HT/SR)
+### Albion, X-Com: UFO Defense (UFO: Enemy Unknown), X-Com: Terror from the Deep, Warcraft: Orcs & Humans [repo](https://github.com/M-HT/SR)
 
 - originals released 1994-1995, target: DOS, x86 ?-bit
 - disassembler based on udis86
