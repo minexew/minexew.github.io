@@ -6,8 +6,10 @@ comments: true
 
 About a year ago, I began to look into [adding emulation of MascotCapsule Micro3D API to freej2me](https://github.com/hex007/freej2me/issues/27). As it turns out, the API was only ever implemented in native code, the media formats used are undocumented, [the company](https://www.hicorp.co.jp/en/) pretends it never exited and so on -- nothing new in the world of emulation. Fortunately, I had [saved](https://github.com/minexew/MascotCapsule_Archaeology/tree/master/Docs_Resources_SDK) the vendor's public documentation and tools before they were removed from their website. This allowed some fuzzing of the converter, which ultimately proved insufficient, and IDA was brought in.
 
+<figure>
 ![M3DConverter IDA]({{ site.url }}/images/2018-12-29-mascotcapsule/ida.png)
-<center><i>Yeah...</i></center>
+<figcaption>Yeah...</figcaption>
+</figure>
 
 MBAC
 ----
