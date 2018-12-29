@@ -17,6 +17,8 @@ comments: true
 - disassembler based on udis86
 - generate x86 or ARM assembly (ARM back-end is 8600 lines)
 
+### Frontier: First Encounters [repo](https://github.com/videogamepreservation/jjffe), [archived website](https://web.archive.org/web/20110303051207/http://jaj22.org.uk/jjffe/)
+
 ### Devilution [repo](https://github.com/diasurgical/devilution)
 
 - original release 1996, target: Windows 95, x86 32-bit
