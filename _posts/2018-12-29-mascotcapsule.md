@@ -17,7 +17,7 @@ It uses several kinds of value packing to maximize efficiency. We don't yet have
 
 In practice, while Galaxy of Fire has 46 different MBAC models, it only uses 5 textures for all of them.
 
-{% include figure.html alt="Galaxy on Fire ships.bmp" url="2018-12-29-mascotcapsule/gof-ships.png" caption="This 256x256x8-bit texture is used for all the spaceships, asteroids and a few other effects in GoF" %}
+{% include figure.html alt="Galaxy on Fire ships.bmp" src="2018-12-29-mascotcapsule/gof-ships.png" caption="This 256x256x8-bit texture is used for all the spaceships, asteroids and a few other effects in GoF" %}
 
 {% include figure.html alt="alien_battleship_01.jpg" src="2018-12-29-mascotcapsule/alien_battleship_01.jpg" caption="A textured Vossk battleship." %}
 
