@@ -9,7 +9,7 @@ figcaption { font-style: italic; }
 
 <a href="{{ site.url }}">&larr;&ensp;blog index</a>
 
-<h1>{{ page.title }} <span style="font-size: 75%; opacity: 0.5">{{ page.date | date_to_string  }}</span></h1>
+<h1>{{ page.title }} {% if page.date %}<span style="font-size: 75%; opacity: 0.5">{{ page.date | date_to_string  }}</span>{% endif %}</h1>
 {{ content }}
 
 {% if page.comments %}
