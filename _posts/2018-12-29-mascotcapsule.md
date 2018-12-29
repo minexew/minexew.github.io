@@ -26,7 +26,11 @@ MTRA
 
 MTRA files (`com.mascotcapsule.micro3d.v3.ActionTable`) contain animation data for Figures.
 
-Although they don't use any bit-packing tricks like MBAC, it's still pretty difficult to guess what is going on just from looking through a hex editor; remember, there are no floats to help you find your way, everything is done in fixed point.
+A MTRA will contain data for each bone (aka "segment") in the corresponding MBAC. In the simplest case, this will be just one byte that says "the transformation matrix for this bone at any given time is identity". In more complex cases, you have the usual bunch of keyframes for translation, rotation and scaling. If you know how glTF does animation, the principle is the same. The data model in binary MTRA corresponds directly to the source TRA format, for which we fortunately [have documentation](https://github.com/minexew/MascotCapsule_Archaeology/blob/master/Docs_Resources_SDK/data_format_tra4_2_1.zip).
+
+Although MTRA files don't use bit-level packing like MBAC, it's still pretty difficult to guess what is going on just from looking with an hex editor; remember, there are no floats to help you find your way, everything is done in fixed point.
+
+{% include figure.html alt="hex editor" src="{{ site.url }}/images/2018-12-29-mascotcapsule/hex.png" caption="Want to make a guess? Hint: the 20-byte trailer is something we've seen before" %}
 
 {% include figure.html alt="mtra-dump.png" src="{{ site.url }}/images/2018-12-29-mascotcapsule/mtra-dump.png" caption="After staring into IDA's disassembly for hours, we get something the looks like this." %}
 
