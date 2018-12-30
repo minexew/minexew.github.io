@@ -39,6 +39,50 @@ comments: true
 - [custom IDA plugin](https://github.com/notaz/ia32rtools/blob/master/ida/saveasm/saveasm.cpp) to dump assembly
 - [custom decompiler](https://github.com/notaz/ia32rtools/blob/master/tools/translate.c) that emits compilable low-level C representation of the assembly code
 
+[example C code](https://pyra-handheld.com/boards/threads/starcraft.73844/page-3#post-1292054):
+```
+int sub_401310(int a1, int a2)
+{
+u32 eax = (u32)a1;
+u32 ecx;
+u32 edx;
+u32 esi;
+u32 edi;
+
+if (eax != 0)
+goto loc_40131D;
+eax = (u32)a2; // arg_0
+eax += 4;
+
+loc_40131D:
+esi = *(u32 *)(eax);
+if (esi == 0)
+goto loc_401351;
+edx = *(u32 *)(eax+4);
+if ((s32)edx > 0)
+goto loc_40132F;
+edx = ~edx;
+goto loc_40133A;
+
+loc_40132F:
+edi = *(u32 *)(esi+4);
+ecx = eax;
+ecx -= edi;
+edx += ecx;
+
+loc_40133A:
+*(u32 *)(edx) = esi;
+ecx = *(u32 *)(eax);
+edx = *(u32 *)(eax+4);
+*(u32 *)(ecx+4) = edx;
+*(u32 *)(eax) = 0;
+*(u32 *)(eax+4) = 0;
+
+loc_401351:
+return eax;
+}
+```
+
 ### pokeruby [repo](https://github.com/pret/pokeruby)
 
 - original released 2002, target: Game Boy Advance, flat ROM image, ARM7TDMI 32-bit
