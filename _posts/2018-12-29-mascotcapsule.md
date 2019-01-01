@@ -40,6 +40,6 @@ There are still mysteries to be solved, such as the 16-byte binary string in the
 
 The next step will be to document this mess and then make a small script that will go over a directory of MBAC files and render a nice gallery of previews. That should be fun.
 
-Bonus
------
-When playing around with offline rendering, I found myself teleported [*on board*]({{site_url}}/images/2018-12-29-mascotcapsule/vossk-interior.png) a Vossk cruiser. Crap!
+----
+
+**Bonus**: When playing around with offline rendering, I found myself teleported [*on board*]({{site_url}}/images/2018-12-29-mascotcapsule/vossk-interior.png) a Vossk cruiser. Crap!
