@@ -4,7 +4,9 @@ title:  "Peeking further into MascotCapsule formats"
 comments: true
 ---
 
-About a year ago, I began to look into [adding emulation of MascotCapsule Micro3D API to freej2me](https://github.com/hex007/freej2me/issues/27). As it turns out, the API was only ever implemented in native code, the media formats used are undocumented, [the company](https://www.hicorp.co.jp/en/) pretends it never exited and so on -- nothing new in the world of emulation. Fortunately, I had [saved](https://github.com/minexew/MascotCapsule_Archaeology/tree/master/Docs_Resources_SDK) the vendor's public documentation and tools before they were removed from their website. This allowed some fuzzing of the converter, which ultimately proved insufficient, and IDA was brought in.
+About a year ago, I began to look into [adding emulation of MascotCapsule Micro3D API to freej2me](https://github.com/hex007/freej2me/issues/27). As it turns out, the API was only ever implemented in native code, the media formats used are undocumented, [the company](https://www.hicorp.co.jp/en/) pretends it never exited and so on -- nothing new in the world of emulation. We know what the API looks like, and can more or less guess how to re-implement it, but what has been a complete mystery are the proprietary media formats used to store models, textures and animations.
+
+Fortunately, I had [saved](https://github.com/minexew/MascotCapsule_Archaeology/tree/master/Docs_Resources_SDK) the vendor's public documentation and tools before they were removed from their website. This allowed some fuzzing of the converter, which ultimately proved insufficient, and IDA was brought in.
 
 {% include figure.html alt="M3DConverter from the SDK, as decompiled by IDA" src="2018-12-29-mascotcapsule/ida.png" caption="Yeah..." %}
 
@@ -15,7 +17,7 @@ MBAC
 
 It uses several kinds of value packing to maximize efficiency. We don't yet have full understanding of all the fields, but it's enough to dump geometry and texture mapping. Interestingly enough, a MBAC file doesn't actually tell you which texture belongs to it. When loading the Figure in game, you have to manually bind a texture through the `Figure.setTexture` method.
 
-In practice, while Galaxy of Fire has 46 different MBAC models, it only uses 5 textures for all of them.
+In practice, while Galaxy of Fire has 46 different MBAC models, it only uses 5 textures for all of them and they're all just BMP images. No fancy encoding, no funky color spaces, no swizzling of texture coordinates! I'm not sure whether I should rejoice or be disappointed.
 
 {% include figure.html alt="Galaxy on Fire ships.bmp" src="2018-12-29-mascotcapsule/gof-ships.png" caption="This 256x256x8-bit texture is used for all the spaceships, asteroids and a few other effects in GoF" %}
 
