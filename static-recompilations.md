@@ -11,6 +11,10 @@ comments: true
 - IR translated to C (no reconstruction of higher-level structure), compiled natively
 - original program has very clean platform interface, no interrupts etc.
 
+### NESgen [paper](https://github.com/Xenomega/NESgen/blob/master/NESgen/NESgen%20Documentation.docx) [repo](https://github.com/Xenomega/NESgen)
+
+- very limited production ROM support
+
 ### Albion, X-Com: UFO Defense (UFO: Enemy Unknown), X-Com: Terror from the Deep, Warcraft: Orcs & Humans [repo](https://github.com/M-HT/SR)
 
 - originals released 1994-1995, target: DOS, x86 ?-bit
