@@ -93,3 +93,15 @@ return eax;
 - unclear how initial disassembly was obtained
 - exact toolchain is known
 - functions are manually rewritten in C to generate identical binary code
+
+### goldeneye\_src [repo](https://gitlab.com/kholdfuzion/goldeneye_src)
+
+### n64decomp/oot [repo](https://github.com/n64decomp/oot)
+### n64decomp/sm64 [repo](https://github.com/n64decomp/sm64)
+
+- unclear how initial disassembly was obtained
+- exact toolchain + SDK is known
+- functions are manually rewritten in C to generate identical binary code
+- useful tools: https://github.com/simonlindholm/asm-differ https://github.com/simonlindholm/decomp-permuter
+
+
