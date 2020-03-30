@@ -104,3 +104,7 @@ Since everything shares a single address space, TempleOS [tasks](https://github.
 There is much more that could be said, but for today, our time's up. In part 3, we will finally do less talking, and more... doing. See you next month, class!
 
 As a homework, you are invited to AOT-compile a simple TempleOS program and explain what is seen in the resulting BIN file headers.
+
+---
+
+Special thanks to the amazing combo of [draw.io](https://draw.io), [Inkscape](https://inkscape.org/) & [nano](https://vecta.io/nano)!
