@@ -96,10 +96,12 @@ return eax;
 
 ### goldeneye\_src [repo](https://gitlab.com/kholdfuzion/goldeneye_src)
 
+### n64decomp/majora [repo](https://github.com/n64decomp/majora)
 ### n64decomp/oot [repo](https://github.com/n64decomp/oot)
 ### n64decomp/sm64 [repo](https://github.com/n64decomp/sm64)
 
 - unclear how initial disassembly was obtained
+  - majora has a [custom annotating disassembler](https://github.com/n64decomp/majora/blob/1b335a770b90e7bc43c02776f2f3afb2402e254a/tools/disasm.py) written from scratch by https://github.com/Rozelette
 - exact toolchain + SDK is known
 - functions are manually rewritten in C to generate identical binary code
 - useful tools: https://github.com/simonlindholm/asm-differ https://github.com/simonlindholm/decomp-permuter
