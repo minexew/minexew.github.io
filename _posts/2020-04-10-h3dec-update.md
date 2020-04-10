@@ -372,6 +372,7 @@ For one, PEFile can be replaced with [CLE]() which also supports ELF, Mach-O and
     - [Uroboros: Infrastructure for Reassembleable Disassembling and Transformation](https://github.com/s3team/uroboros)
 - [angr](https://angr.io/)
 - [Superset Disassembly: Statically Rewriting x86 Binaries Without Heuristics](https://web.cse.ohio-state.edu/~lin.3021/file/NDSS18a.pdf)
+- [awesome-decompilation: A curated list of awesome decompilation resources and projects](https://github.com/nforest/awesome-decompilation)
 
 ## Special thanks
 
