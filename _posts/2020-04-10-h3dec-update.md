@@ -24,6 +24,7 @@ To make the task easier, we shall introduce some assumptions:
   - global variables in the executable's DATA/BSS sections
 - the code is _sane_, for example it does not invoke CPU exceptions on purpose
 - the program is a _good citizen_ in the host operating system (Windows), e.g. observing the rules of memory allocation and the OS APIs
+- the executable is _honest_ and complete: no self-modifying code, no runtime-generated code, no executable packing
 - perhaps most importantly: the flow of the program is _linear_ and only diverted by jumps/calls in the program (hardware interrupts are a bane of static recompilation on bare-metal platforms, such as the NES)
 
 These are some bold claims, and will probably not hold for 100% of the code (e.g. hand-written assembly routines might not have the structure as compiled C code). The important observation to note here is that violations, if they are limited to a small subset of the code, will only degrade the decompilation _locally_ in those parts. They should not hamper the overall understanding of the program, as long as at least the flow linearity assumption holds.
