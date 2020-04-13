@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<h2 style="opacity: 0.75">TempleOS programs in Linux user-space, part 3: Stranger in a strange land <span style="font-size: 75%; opacity: 0.75">coming soon</span></h2>
+<h2 style="opacity: 0.5">TempleOS programs in Linux user-space, part 3: Stranger in a strange land <span style="font-size: 75%; opacity: 0.75">coming soon</span></h2>
 
 {% for post in site.posts %}
 <h2><a href="{{ post.url }}">{{ post.title }}</a> <span style="font-size: 75%; opacity: 0.5">{{ post.date | date_to_string  }}</span></h2>
