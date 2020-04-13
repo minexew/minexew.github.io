@@ -6,6 +6,8 @@ comments: true
 
 _[Last time](../../02/27/templeos-loader-part1.html), we discussed why it might be desirable to run TempleOS on Linux in some form other than a full-blown virtual machine, and we teased some possible approaches. In the end, we commited to finding out whether it would be possible to run the standard kernel as a user-space program. Today, we will see what we are up against._
 
+_(Updated on 13 Apr 2020)_
+
 Being at the heart of TempleOS, the kernel, consisting of about 22 000 lines of source code, has several crucial responsibilities:
 
 - Initialization and interfacing with hardware
@@ -65,7 +67,7 @@ _(Now we are no longer in the [AOT-compiled](https://templeos.holyc.xyz/Wb/Doc/G
 
 1. The JIT compilation context starts out as a tabula rasa. No function prototypes or global variables are known, only the basic built-in types.
 2. Therefore, kernel headers must be parsed to gain access to its public functions, structures and exported variables. Since Adam is the [father of all tasks](https://templeos.holyc.xyz/Wb/Doc/GuideLines.html#l26), this environment will be inherited by all user programs. [[L8](https://github.com/cia-foundation/TempleOS/blob/c26482bb6ad3f80106d28504ec5db3c6a360732c/StartOS.HC#L8)]
-3. The Adam environment is loaded [[L18](https://github.com/cia-foundation/TempleOS/blob/c26482bb6ad3f80106d28504ec5db3c6a360732c/StartOS.HC#L18)]
+3. The Adam code ([MakeAdam.HC](https://github.com/cia-foundation/TempleOS/blob/c26482bb6ad3f80106d28504ec5db3c6a360732c/Adam/MakeAdam.HC)) is included. As with the kernel exports, all of these functions will be inherited by new tasks. [[L18](https://github.com/cia-foundation/TempleOS/blob/c26482bb6ad3f80106d28504ec5db3c6a360732c/StartOS.HC#L18)]
 4. We proceed to build up the user space, opening a DolDoc window, starting up the window manager, and applying user customizations via [MakeHome.HC](https://github.com/cia-foundation/TempleOS/blob/c26482bb6ad3f80106d28504ec5db3c6a360732c/MakeHome.HC)
 5. The OS is now ready to use. The kernel keeps running behind the scenes --- handling interrupts, some timed events, and, of course, function calls from "user space"
 
@@ -93,7 +95,9 @@ Interestingly, the kernel is not compiled as a flat binary. The BIN format, whic
 
 Dynamic linking is used even to resolve some of the function calls internal to the kernel.
 
-One way to explore BIN files is a command-line tool called [bininfo](https://github.com/cia-foundation/bininfo). It generates a textual dump of the kernel's headers which can be found [here](https://github.com/cia-foundation/bininfo/blob/92e273972cb304828aef75aedd2fa48682080394/.github/expected/Kernel.txt). In there, you can see an import of `ExeFile` (a compiler function), as well as `SET_GS_BASE` provided by the kernel itself. Note that the BIN file doesn't give any hints about _where_ the imported functions come from!
+One way to explore BIN files is a command-line tool called [bininfo](https://github.com/cia-foundation/bininfo). It generates a textual dump of the kernel's headers which can be found [here](https://github.com/cia-foundation/bininfo/blob/92e273972cb304828aef75aedd2fa48682080394/.github/expected/Kernel.txt). Towards the bottom, you can see the imported functions (`IET_REL_I32` entries). Note that the BIN file doesn't give any hints about _where_ these symbols actually come from.
+
+We have to do some cross-referencing to find out that `SET_GS_BASE` is provided by the kernel itself. `ExeFile`, for example, comes from the compiler. But the rabbit hole goes deeper -- certain functions, like `DocSave`, come from Adam. This means that the corresponding function pointers in the kernel are _undefined_ until "sometime later" when the JIT compiler encounters their implementations through MakeAdam. Might the kernel attempt to call them before that? What would happen? Let us know once you find out!
 
 ## Task scheduling
 
