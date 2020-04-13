@@ -34,7 +34,7 @@ Since UEFI booting is not supported, the kernel is always born in 16-bit mode, w
 #### KStart32.HC
 
 1. (Boring: 32-bit control & segment registers are initialized for the first time) [[L75](https://github.com/cia-foundation/TempleOS/blob/c26482bb6ad3f80106d28504ec5db3c6a360732c/Kernel/KStart32.HC#L75)]
-2. The kernel is [relocated](https://en.wikipedia.org/wiki/Relocation_(computing)) --- it must be ensured that any absolute addresses in the code correspond to the actual kernel load address. [[L95](https://github.com/cia-foundation/TempleOS/blob/c26482bb6ad3f80106d28504ec5db3c6a360732c/Kernel/KStart32.HC#L95)]
+2. The kernel is [relocated](https://en.wikipedia.org/wiki/Relocation_(computing)) to ensure that any absolute addresses in the code correspond to the actual kernel load address. [[L95](https://github.com/cia-foundation/TempleOS/blob/c26482bb6ad3f80106d28504ec5db3c6a360732c/Kernel/KStart32.HC#L95)]
 3. More "boring" x86 initialization (`SYS_FIND_PCIBIOS_SERVICE_DIR`, `SYS_INIT_16MEG_SYS_CODE_BP`) [[L109+](https://github.com/cia-foundation/TempleOS/blob/c26482bb6ad3f80106d28504ec5db3c6a360732c/Kernel/KStart32.HC#L109)]
 4. Finally, we enter 64-bit mode via _[SYS_ENTER_LONG_MODE](https://github.com/cia-foundation/TempleOS/blob/09f344d2a97bad5e37e3c6b657360e16d72a80e1/Kernel/KStart64.HC#L44)_
 
@@ -93,11 +93,13 @@ Interestingly, the kernel is not compiled as a flat binary. The BIN format, whic
 
 {% include figure-seamless.html alt="" src="2020-03-29-templeos-loader-part2/templeos-bin.svg" caption="Structure of a BIN file" %}
 
-Dynamic linking is used even to resolve some of the function calls internal to the kernel.
+However, the kernel BIN file is constructed in such a way that the bootloader can jump into it directly and start executing. The first 2 bytes of the BIN header encode a `jmp` instruction to the first byte of the image (labelled `SYS_KERNEL`). Dynamic linking used later to fix-up addresses in the code, export functions to JIT code, and even to resolve some of the function calls internal to the kernel.
 
 One way to explore BIN files is a command-line tool called [bininfo](https://github.com/cia-foundation/bininfo). It generates a textual dump of the kernel's headers which can be found [here](https://github.com/cia-foundation/bininfo/blob/92e273972cb304828aef75aedd2fa48682080394/.github/expected/Kernel.txt). Towards the bottom, you can see the imported functions (`IET_REL_I32` entries). Note that the BIN file doesn't give any hints about _where_ these symbols actually come from.
 
 We have to do some cross-referencing to find out that `SET_GS_BASE` is provided by the kernel itself. `ExeFile`, for example, comes from the compiler. But the rabbit hole goes deeper -- certain functions, like `DocSave`, come from Adam. This means that the corresponding function pointers in the kernel are _undefined_ until "sometime later" when the JIT compiler encounters their implementations through MakeAdam. Might the kernel attempt to call them before that? What would happen? Let us know once you find out!
+
+_Fun fact: 32-bit `IET_ABS_ADDR` relocations are also generated in the 16-bit early initialization code. Of course, these are meaningless, because 16-bit code just uses segment-based addressing, and by the time the kernel relocates itself (and destroys whatever follows these 16-bit operands), we are already in 32-bit land._
 
 ## Task scheduling
 
