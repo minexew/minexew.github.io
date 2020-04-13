@@ -99,7 +99,7 @@ One way to explore BIN files is a command-line tool called [bininfo](https://git
 
 We have to do some cross-referencing to find out that `SET_GS_BASE` is provided by the kernel itself. `ExeFile`, for example, comes from the compiler. But the rabbit hole goes deeper -- certain functions, like `DocSave`, come from Adam. This means that the corresponding function pointers in the kernel are _undefined_ until "sometime later" when the JIT compiler encounters their implementations through MakeAdam. Might the kernel attempt to call them before that? What would happen? Let us know once you find out!
 
-_Fun fact: 32-bit `IET_ABS_ADDR` relocations are also generated in the 16-bit early initialization code. Of course, these are meaningless, because 16-bit code just uses segment-based addressing, and by the time the kernel relocates itself (and destroys whatever follows these 16-bit operands), we are already in 32-bit land._
+_Fun fact: 32-bit `IET_ABS_ADDR` relocations are also generated for labels in the 16-bit early initialization code. Of course, these are meaningless, because 16-bit code just uses segment-based addressing, and by the time the kernel relocates itself (and destroys whatever follows these 16-bit operands), we are already in 32-bit land._
 
 ## Task scheduling
 
