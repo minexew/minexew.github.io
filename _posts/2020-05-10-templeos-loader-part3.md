@@ -115,8 +115,8 @@ This tells us the following:
 
 Now that we have gathered some meta-data, let's look at the actual code. First we have to untangle it from the BIN file, though. Observe that the patch table starts at position 56 in the file, and the BIN header is 32 bytes in length. That leaves 24 bytes of program code in between. Let's extract it:
 
-    dd skip=32 count=24 if=Blogpost.BIN of=Blogpost.text bs=1
-    objdump -b binary -m i386:x86-64 -D -M intel Blogpost.text
+    dd skip=32 count=24 if=Example.BIN of=Example.text bs=1
+    objdump -b binary -m i386:x86-64 -D -M intel Example.text
 
 Some explanation is probably in order. _objdump_, which comes from _binutils_, is a versatile tool for analyzing and disassembling object files. It supports many mainstream formats, including ELF, PE and Mach-O, but unfortunately has no support for TempleOS BIN files. What it _can_ do, however, is to disassemble flat binaries, and this is good enough for us. The first 2 options set up this mode of operation:
  - `-b binary` tells objdump to treat the file as a flat binary, and
