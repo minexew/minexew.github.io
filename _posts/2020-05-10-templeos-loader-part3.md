@@ -18,7 +18,7 @@ An Application Binary Interface (ABI) encompasses the following (and more):
  - program relocation
  - exception handling
 
-To bridge the two worlds, we need to adapt all used aspects of the ABI. However, in this post we will focus only on the most essential parts to get off the ground, ignoring floating-point concerns, vararg functions and exceptions, for example.
+To bridge the two worlds, we need to adapt all relevant aspects of the ABI. However, in this post we will focus only on the most essential parts to get off the ground, ignoring floating-point concerns, vararg functions and exceptions, for example.
 
 ## TempleOS
 
@@ -29,7 +29,7 @@ In the interest of simplicity, TempleOS doesn't attempt to adhere to any pre-exi
 - each task has a hash table of loaded symbols (inherited by sub-tasks) that needs to be pre-filled to satisfy the imports of a BIN file
 - code can be only loaded into the low 2 GiB of address space
 - There is no _.bss_. You want a variable, you pay for it.
-- There is no split between _.data_, _.rodata_ and _.text_ either. Everything is one big blob that must be readable, writable and executable at the same time.
+- There is no split between _.data_, _.rodata_ and _.text_ either. Everything is one big blob that is readable, writable and executable at the same time. A security nightmare, but also simple and straightforward.
 
 The following calling convention is observed in HolyC code and when interacting with it:
 
@@ -54,15 +54,15 @@ In terms of calling convention, the rules are as follows:
 
 # Hello world
 
-Now is a good time to bring out your homework from last time. In case you slacked it off, you can use the following program that we will compile, dissect, adapt, re-assemble together.
+Now is a good time to bring out your homework from last time. In case you slacked it off, you can use the following program that we will compile, dissect, adapt and re-assemble together.
 
-Our minimal program looks like this:
+Our minimal program, _Example.HC_ looks like this:
 
 ```c++
 PutS("Hello world\n");
 ```
 
-Unlike _Print_, _PutS_ has a very straightforward calling convetion, so it's perfect for our simple example. We can compile the program like this:
+That's it! Unlike _Print_, _PutS_ has a very straightforward calling convetion, so it's perfect for our simple example. We can compile the program like this:
 
 ```c++
 Cmp("Example");
@@ -72,14 +72,11 @@ which will produce `Example.BIN.Z`.
 
 ## Dissection
 
-Now, let us look at the executable from several directions. I will use Linux for this, because it gives us more tools for this job, which implies that first we have to somehow extract `Example.BIN` from the TempleOS system.
+Now we will look at the executable from a few different angles. I will use Linux for this, because it gives us a lot of tools for this job, which implies that first we have to somehow extract `Example.BIN` from the TempleOS system.
 
-We will start by simply hex-dumping the contents of the file, to see if there is anything obviously interesting.
+Having done that, let's start by simply hex-dumping the contents of the file, to see if there is anything obviously interesting.
 
-    xxd Example.BIN
-
-produces:
-
+    $ xxd Example.BIN
     00000000: eb1e 0000 544f 5342 ffff ffff ffff ff7f  ....TOSB........
     00000010: 3800 0000 0000 0000 6000 0000 0000 0000  8.......`.......
     00000020: 680b 0000 00e8 0000 0000 c348 656c 6c6f  h..........Hello
@@ -89,12 +86,9 @@ produces:
 
 Swell. We can see the `TOSB` signature, our string, and also the name of the called function. Presumably, somewhere in the middle of all this is executable code.
 
-Next, we make use of the [bininfo](https://github.com/cia-foundation/bininfo) tool that was introduced last time. Executing
+Next, we make use of the [bininfo](https://github.com/cia-foundation/bininfo) tool that was introduced last time.
 
-    bininfo.py Example.BIN
-
-will output
-
+    $ bininfo.py Example.BIN
     BIN header:
         jmp                 [EB 1E]h
         alignment           1 byte(s)
