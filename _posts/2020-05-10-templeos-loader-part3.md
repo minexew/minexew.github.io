@@ -168,7 +168,7 @@ Now the fun part: let's cross-reference the binary code with the patch table!
 
 ## Transforming relocations
 
-Where TempleOS does away with one universal table, ELF needs at least two structures: a _symbol table_ and a _relocation table_. The symbol table contains names of all imported and exported symbols; the relocation table contains relocations (duh), but the point is that relocation entries may also point to symbol table entries, to use symbol adresses in relocation calculations. Keep the psABI document at hand, because it also documents the applicable relocation types. To speak in concrete terms:
+Where TempleOS gets by with one universal table, ELF needs at least two structures: a _symbol table_ and a _relocation table_. The symbol table contains names of all imported and exported symbols; the relocation table contains relocations (duh), but the point is that relocation entries may also point to symbol table entries, to use symbol adresses in relocation calculations. Keep the psABI document at hand, because it also documents the applicable relocation types. To speak in concrete terms:
 
 - `IET_ABS_ADDR` has an ELF equivalent in `R_X86_64_32`. The equation for this type of relocation is `S + A`, where _S_ stands for the address of a _symbol_ and _A_ stands for a constant _addend_. Since we are fixing up an image offset, _symbol_ has to point to the image start (and indeed, ELF lets us refer to _program sections_ through symbols) and _addend_ must be the un-fixed-up value that we found by disassembling the program. In ELF for x86-64, the addend is stored in the relocation table itself (see `Elf64_Rela`); the value of the placeholder in the code is not used.
 
