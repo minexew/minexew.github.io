@@ -132,18 +132,18 @@ The following arguments tell objdump to `-D`isassemble, using `intel` syntax and
 
 The output should look more or less as follows:
 
-```
-   0:	68 0b 00 00 00       	push   0xb
-   5:	e8 00 00 00 00       	call   0xa
-   a:	c3                   	ret    
-   b:	48                   	rex.W
-   c:	65 6c                	gs ins BYTE PTR es:[rdi],dx
-   e:	6c                   	ins    BYTE PTR es:[rdi],dx
-   f:	6f                   	outs   dx,DWORD PTR ds:[rsi]
-  10:	20 77 6f             	and    BYTE PTR [rdi+0x6f],dh
-  13:	72 6c                	jb     0x81
-  15:	64 0a 00             	or     al,BYTE PTR fs:[rax]
-```
+<div class="highlight"><pre class="highlight" style="font-size: 75%">
+   0:	<span style="font-style: italic; opacity: 0.5">68 0b 00 00 00</span>       	<strong>push</strong>   0xb
+   5:	<span style="font-style: italic; opacity: 0.5">e8 00 00 00 00</span>       	<strong>call</strong>   0xa
+   a:	<span style="font-style: italic; opacity: 0.5">c3</span>                   	<strong>ret</strong>    
+   b:	<span style="font-style: italic; opacity: 0.5">48</span>                   	rex.W
+   c:	<span style="font-style: italic; opacity: 0.5">65 6c</span>                	gs ins BYTE PTR es:[rdi],dx
+   e:	<span style="font-style: italic; opacity: 0.5">6c</span>                   	ins    BYTE PTR es:[rdi],dx
+   f:	<span style="font-style: italic; opacity: 0.5">6f</span>                   	outs   dx,DWORD PTR ds:[rsi]
+  10:	<span style="font-style: italic; opacity: 0.5">20 77 6f</span>             	and    BYTE PTR [rdi+0x6f],dh
+  13:	<span style="font-style: italic; opacity: 0.5">72 6c</span>                	jb     0x81
+  15:	<span style="font-style: italic; opacity: 0.5">64 0a 00</span>             	or     al,BYTE PTR fs:[rax]
+</pre></div>
 
 That's a bunch of code for a simple print! What is going on? In fact, only the first 3 instructions are real code (our main function), while the rest correspond to the "Hello world" string. (objdump has no way of distinguishing between code and interleaved data!)
 
