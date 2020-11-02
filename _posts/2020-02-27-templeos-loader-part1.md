@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "TempleOS programs in Linux user-space, part 1: Motivation"
+emoji: "⛩️"
 comments: true
 ---
 

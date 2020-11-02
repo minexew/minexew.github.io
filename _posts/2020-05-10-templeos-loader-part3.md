@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "TempleOS programs in Linux user-space, part 3: Stranger in a strange land"
+emoji: "⛩️"
 comments: true
 ---
 

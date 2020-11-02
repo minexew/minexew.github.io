@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "On iterative reassembleable disassembly and the Heroes III decompilation"
+emoji: "⚔️"
 comments: true
 ---
 

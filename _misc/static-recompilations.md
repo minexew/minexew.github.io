@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Some interesting static recompilation projects"
+title:  "Some interesting {de/re}compilation projects"
 comments: true
 ---
 
@@ -36,6 +36,12 @@ comments: true
 - original released 1996, target: DOS, x86 ?-bit
 - custom disassembler (not published)
 - no attempt at supporting non-x86
+
+### NFSIISE [repo](https://github.com/zaps166/NFSIISE-CPP)
+
+- original released 1997, target: Windows x86 32-bit
+- auto-translation similar to StarCraft below
+- tools published anywhere?
 
 ### StarCraft for Pandora [repo](https://pyra-handheld.com/boards/threads/starcraft.73844/)
 

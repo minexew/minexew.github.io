@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Peeking further into MascotCapsule formats"
+emoji: "🎮"
 comments: true
 ---
 

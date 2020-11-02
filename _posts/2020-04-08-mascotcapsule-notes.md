@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Notes on MascotCapsule emulation efforts"
+emoji: "🎮"
 comments: true
 ---
 

@@ -1,3 +1,7 @@
 theme: minima
 title: "minexew's blog"
 description: "game technology, RE, coding"
+
+collections:
+  misc:
+    output: true

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "TempleOS programs in Linux user-space, part 2: Anatomy of a kernel"
+emoji: "⛩️"
 comments: true
 ---
 
