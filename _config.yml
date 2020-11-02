@@ -5,3 +5,6 @@ description: "game technology, RE, coding"
 collections:
   misc:
     output: true
+
+plugins:
+  - jekyll-feed
