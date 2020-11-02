@@ -17,38 +17,40 @@ To avoid having to start with writing a rasterizer from scratch, my first steps 
 
 You can see a snippet from such command log below:
 
-    (Figure "44e2f324"
-        (data "4d420500020203019600c00000000100000000000100010000...")
+```scheme
+(Figure "44e2f324"
+    (data "4d420500020203019600c00000000100000000000100010000...")
+)
+(Texture "2f06e8e7"
+    (data "424d7824000000000000760000002800000060000000600000...")
+)
+(drawFigure
+    (figure "44e2f324"
+        (texture "2f06e8e7")
+        (pattern 0)
+        (actionTable "null")
+        (postureAction 0)
+        (postureFrame 0)
     )
-    (Texture "2f06e8e7"
-        (data "424d7824000000000000760000002800000060000000600000...")
+    (x 0)
+    (y 0)
+    (layout
+        (affineTrans 4086 -187 96 0 190 4082 -160 0 -88 165 4091 0)
+        (projection "PERSPECTIVE_FOV")
+        (center 120 160)
+        (perspective 100 31767 800)
     )
-    (drawFigure
-        (figure "44e2f324"
-            (texture "2f06e8e7")
-            (pattern 0)
-            (actionTable "null")
-            (postureAction 0)
-            (postureFrame 0)
-        )
-        (x 0)
-        (y 0)
-        (layout
-            (affineTrans 4086 -187 96 0 190 4082 -160 0 -88 165 4091 0)
-            (projection "PERSPECTIVE_FOV")
-            (center 120 160)
-            (perspective 100 31767 800)
-        )
-        (effect
-            (light "null")
-            (shadingType "NORMAL_SHADING")
-            (texture "null")
-            (toonHigh 0)
-            (toonLow 0)
-            (toonThreshold 0)
-            (transparency 0)
-        )
+    (effect
+        (light "null")
+        (shadingType "NORMAL_SHADING")
+        (texture "null")
+        (toonHigh 0)
+        (toonLow 0)
+        (toonThreshold 0)
+        (transparency 0)
     )
+)
+```
 
 Unfortunately, in practice it is not so straightforward to guarantee that the command list is correct in the first place. The MC3D API contains not only rendering functions, but also classes for math, vectors, matrices... If a wrong result is produced in one of those, the game might end up taking a wrong decision somewhere, and produce a nonsensical sequence of commands. In addition, some of the values in the command log, such as affine transforms, are results of calculations done by the games through the MC3D API, so any mistakes in our implementation can also propagate through there.
 

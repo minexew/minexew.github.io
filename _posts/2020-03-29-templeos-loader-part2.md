@@ -3,11 +3,11 @@ layout: post
 title:  "TempleOS programs in Linux user-space, part 2: Anatomy of a kernel"
 emoji: "⛩️"
 comments: true
+updated: 2020-04-13
+theme: "slate"
 ---
 
 _[Last time](../../02/27/templeos-loader-part1.html), we discussed why it might be desirable to run TempleOS on Linux in some form other than a full-blown virtual machine, and we teased some possible approaches. In the end, we commited to finding out whether it would be possible to run the standard kernel as a user-space program. Today, we will see what we are up against._
-
-_(Updated on 13 Apr 2020)_
 
 Being at the heart of TempleOS, the kernel, consisting of about 22 000 lines of source code, has several crucial responsibilities:
 

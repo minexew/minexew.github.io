@@ -6,11 +6,19 @@ figure { text-align: center; margin-bottom: 1.5em; }
 figure.seamless img { border: none; box-shadow: none; padding: 0; }
 figure img { max-width: 100%; }
 figcaption { font-style: italic; }
+
+{% if page.theme == "slate" %}
+body { background-color: #f2f2f2; }
+div.highlighter-rouge::before, .highlight, pre.highlight, code { background-color: #ececec; }
+{% endif %}
 </style>
 
 <a href="{{ site.url }}">&larr;&ensp;blog index</a>
 
-<h1>{{ page.title }} {% if page.date %}<span style="font-size: 75%; opacity: 0.5">{{ page.date | date_to_string  }}</span>{% endif %}</h1>
+<h1>{{ page.title }}</h1>
+
+{% if page.date %}<p style="opacity: 0.5">{{ page.date | date_to_string }}{% if page.updated %}, last update {{ page.updated | date_to_string }}{% endif %}</p>{% endif %}
+
 {{ content }}
 
 {% if page.comments %}

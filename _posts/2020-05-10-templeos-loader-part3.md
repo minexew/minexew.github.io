@@ -3,6 +3,7 @@ layout: post
 title:  "TempleOS programs in Linux user-space, part 3: Stranger in a strange land"
 emoji: "⛩️"
 comments: true
+theme: "slate"
 ---
 
 _[Last time](../../03/29/templeos-loader-part2.html), we took apart the kernel and looked at some binary formats. We will now put our gained knowledge to good use and build something that can be run._
@@ -125,27 +126,27 @@ Some explanation is probably in order. _objdump_, which comes from _binutils_, i
 
 The following arguments tell objdump to `-D`isassemble, using `intel` syntax and finally the name of our image.
 
-The output should look more or less as follows:
+The output should look more or less like the following:
 
-<div class="highlight"><pre class="highlight" style="font-size: 75%">
-   0:	<span style="font-style: italic; opacity: 0.5">68 0b 00 00 00</span>       	<strong>push</strong>   0xb
-   5:	<span style="font-style: italic; opacity: 0.5">e8 00 00 00 00</span>       	<strong>call</strong>   0xa
-   a:	<span style="font-style: italic; opacity: 0.5">c3</span>                   	<strong>ret</strong>    
-   b:	<span style="font-style: italic; opacity: 0.5">48</span>                   	rex.W
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight">
+   0:	<span style="font-style: italic; opacity: 0.5">68 0b 00 00 00</span>       	push   0xb
+   5:	<span style="font-style: italic; opacity: 0.5">e8 00 00 00 00</span>       	call   0xa
+   a:	<span style="font-style: italic; opacity: 0.5">c3</span>                   	ret  
+<div style="opacity: 0.5">   b:	<span style="font-style: italic; opacity: 0.5">48</span>                   	rex.W
    c:	<span style="font-style: italic; opacity: 0.5">65 6c</span>                	gs ins BYTE PTR es:[rdi],dx
    e:	<span style="font-style: italic; opacity: 0.5">6c</span>                   	ins    BYTE PTR es:[rdi],dx
    f:	<span style="font-style: italic; opacity: 0.5">6f</span>                   	outs   dx,DWORD PTR ds:[rsi]
   10:	<span style="font-style: italic; opacity: 0.5">20 77 6f</span>             	and    BYTE PTR [rdi+0x6f],dh
   13:	<span style="font-style: italic; opacity: 0.5">72 6c</span>                	jb     0x81
   15:	<span style="font-style: italic; opacity: 0.5">64 0a 00</span>             	or     al,BYTE PTR fs:[rax]
-</pre></div>
+</div></pre></div></div>
 
 That's a bunch of code for a simple print! What is going on? In fact, only the first 3 instructions are real code (our main function), while the rest correspond to the "Hello world" string. (objdump has no way of distinguishing between code and interleaved data!)
 
 In case you are not fluent in x86 assembly, a quick explanation of what the code does:
 
  - objdump doesn't know any better than to assume that our program starts at address 0. Since we don't know where the program will be loaded anyway, this is fine; at least, this way, all addresses correspond to offsets in the image.
- - The 32-bit value 0000_000Bh is zero-extended to 64 bits and pushed onto the stack. This is a pointer to our string.
+ - The 32-bit value 0000'000Bh is zero-extended to 64 bits and pushed onto the stack. This is a pointer to our string.
  - A function at address 0Ah is called. Hold on, what the hell is going on here? Shouldn't we be calling `PutS`?
  - Finally, we return from the main function. This marks the end of the program.
 
@@ -155,15 +156,15 @@ Now the fun part: let's cross-reference the binary code with the patch table!
 - The `IET_MAIN` entry is trivial, since our program only has one function anyways.
 - On the other hand, `IET_REL_I32` is quite interesting. Remember the strange call instruction? As it turns out, the address 0Ah is bogus; the instruction is encoded as E8h plus a bunch of zeroes -- placeholders. E8h is a _32-bit relative call_ opcode. When executing this instruction, the CPU calculates the destination as follows:
 
-        destination = pc + (int32) operand
+      destination = pc + (int32) operand
 
     where _pc_ corresponds to the program counter after the whole instruction is fetched, which is the address just past the instruction (our 0Ah). So why does our program contain zeros, resulting in a non-sense destination? That's because the called function is not a part of the program -- it is linked _dynamically_. When the binary is loaded, the adress of the actual `PutS` function in memory will be taken, and the instruction will be patched to point to the right place. In order to ensure that `destination == &PutS`, the loader actually has to compute the expression
 
-        operand = &PutS - pc
+      operand = &PutS - pc
 
     or,
 
-        operand = &PutS - (image_load_address + 06h + 4)
+      operand = &PutS - (image_load_address + 06h + 4)
 
     Fun stuff!
 
@@ -248,13 +249,13 @@ shows that there are several options that we can specify. We will only need some
 
 - HolyC import definitions: we will create a file named _ExampleImportDefs.HH_ with the following line in it:
 
-  ```
+  ```c++
   U0 PutS(U8 *st);
   ```
 
 - HolyC export definitions: we will use this to expose the HolyC main function; in _ExampleExportDefs.HH_ put the following:
 
-  ```
+  ```c++
   U0 HCMain();
   ```
 
@@ -276,7 +277,7 @@ _Example.o_ is now a standard relocatable ELF file, and can be inspected using t
 
 Now we have everything ready on the HolyC side. Let's write some C!
 
-```c
+```c++
 #include <stdio.h>
 
 void HCMain(void);

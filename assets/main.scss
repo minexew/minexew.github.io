@@ -1,0 +1,72 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minima";
+
+// JetBrains Mono
+
+@font-face{
+    font-family: 'JetBrains Mono';
+    src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.eot') format('embedded-opentype'),
+         url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2'),
+         url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff') format('woff'),
+         url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/ttf/JetBrainsMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// * {
+//     -webkit-font-feature-settings: "liga" on, "calt" on;
+//     -webkit-font-smoothing: antialiased;
+//     text-rendering: optimizeLegibility;
+//     font-family: 'JetBrains Mono';
+// }
+
+
+// Below: https://github.com/samarsault/texture/blob/master/_sass/_syntax.scss (adapted)
+
+@import 'ext/solarized-light';
+
+div.highlighter-rouge:before {
+    content:"";
+    background-color:#f4f4f4;
+    position: absolute;
+    height: 100%;
+    width: 200vw;
+    left: -100vw;
+    z-index: -1;
+}
+
+div.highlighter-rouge {
+	position: relative;
+    /*right: 150px;*/
+	margin: 40px 0;
+}
+
+.highlight {
+	background-color: #f4f4f4;
+}
+
+div.highlight {
+	padding: 30px /*150px*/ 0px;
+}
+
+pre.highlight, code {
+    font-family: 'JetBrains Mono', 'Consolas', Menlo, monospace;
+    font-size: 11pt;
+	line-height: 1.4em;
+	tab-size: 4;
+	background-color: #f4f4f4;
+}
+
+// Custom
+
+body {
+    overflow-x: hidden;
+}
+
+hr {
+    border: 2px solid #f4f4f4;
+    margin: 1.5rem 1rem;
+}
