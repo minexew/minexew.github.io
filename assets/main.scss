@@ -24,13 +24,14 @@
 // }
 
 
-// Below: https://github.com/samarsault/texture/blob/master/_sass/_syntax.scss (adapted)
+// Below: adapted from https://github.com/samarsault/texture/blob/master/_sass/_syntax.scss
 
 @import 'ext/solarized-light';
 
 div.highlighter-rouge:before {
     content:"";
-    background-color:#f4f4f4;
+    background-color:#f8f8f8;
+    border-top: 1px solid #f0f0f0;
     position: absolute;
     height: 100%;
     width: 200vw;
@@ -41,15 +42,16 @@ div.highlighter-rouge:before {
 div.highlighter-rouge {
 	position: relative;
     /*right: 150px;*/
-	margin: 40px 0;
+	margin: 1em 0;
 }
 
 .highlight {
-	background-color: #f4f4f4;
+	background-color: #f8f8f8;
 }
 
 div.highlight {
-	padding: 30px /*150px*/ 0px;
+    border-top: 1px solid #f0f0f0;
+	padding: 1em /*150px*/ 0px;
 }
 
 pre.highlight, code {
@@ -57,7 +59,8 @@ pre.highlight, code {
     font-size: 11pt;
 	line-height: 1.4em;
 	tab-size: 4;
-	background-color: #f4f4f4;
+	background-color: #f8f8f8;
+    white-space: pre-wrap;
 }
 
 // Custom
