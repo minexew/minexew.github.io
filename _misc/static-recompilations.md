@@ -112,4 +112,8 @@ return eax;
 - functions are manually rewritten in C to generate identical binary code
 - useful tools: https://github.com/simonlindholm/asm-differ https://github.com/simonlindholm/decomp-permuter
 
+### KAIN2 [repo](https://github.com/Gh0stBlade/KAIN2)
+
+- Legacy of Kain: Soul Reaver
+- originally PS1
 
